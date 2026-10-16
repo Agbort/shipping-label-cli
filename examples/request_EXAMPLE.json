@@ -1,0 +1,94 @@
+{
+  "transportDate": "2026-01-15",
+  "labelFormat": "P",
+  "division": "T",
+  "product": "Y",
+  "term": "031",
+  "forwarder": {
+    "id": "YOUR_FORWARDER_ID"
+  },
+  "consignor": {
+    "id": "YOUR_CONSIGNOR_ID",
+    "names": [
+      "Example Sender Ltd."
+    ],
+    "addressInformation": {
+      "streets": [
+        "Example Street 10"
+      ],
+      "city": "Sampletown",
+      "postalCode": "00000",
+      "countryCode": "ES"
+    }
+  },
+  "consignee": {
+    "names": [
+      "Example Recipient Ltd."
+    ],
+    "addressInformation": {
+      "streets": [
+        "Demo Avenue 20"
+      ],
+      "city": "Demo City",
+      "postalCode": "00000",
+      "countryCode": "FR"
+    }
+  },
+  "references": [
+    {
+      "code": "100",
+      "value": "EXAMPLE-001"
+    }
+  ],
+  "transportOptions": {
+    "deliveryNoticeOptions": [
+      {
+        "type": "AS",
+        "name": "Example Contact",
+        "mobilePhone": "0000000000",
+        "mail": "contact@example.invalid"
+      }
+    ],
+    "deliveryTailLift": false,
+    "selfCollector": false,
+    "frostProtected": false
+  },
+  "services": [
+    {
+      "code": "AT"
+    }
+  ],
+  "texts": [
+    {
+      "code": "ZU",
+      "value": "DEMO ONLY - DO NOT TRANSMIT"
+    },
+    {
+      "code": "ZU",
+      "value": "Example cargo details - fictional information"
+    }
+  ],
+  "transportOrderLines": [
+    {
+      "quantity": 1,
+      "packaging": "EU",
+      "content": "Sample pallet 1 of 1 - EXAMPLE-001",
+      "weight": {
+        "weight": 100,
+        "unit": "KG"
+      },
+      "dangerousGoods": [
+        {
+          "customerId": "EXAMPLE",
+          "unNumber": "",
+          "packagingGroup": "",
+          "mass": 100,
+          "quantity": 1,
+          "packaging": "KT",
+          "nosSourceOfHazard": "",
+          "environmentallyHazardous": false
+        }
+      ]
+    }
+  ]
+}
