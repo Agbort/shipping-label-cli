@@ -56,6 +56,8 @@ if ([string]::IsNullOrWhiteSpace($ApiKey)) {
 #$ScriptPath = Join-Path $PSScriptRoot "list-transportorders.ps1"
 $ListScript = Join-Path $PSScriptRoot "list-transportorders.ps1"
 $GetLabelScript = Join-Path $PSScriptRoot "get-labelv2.ps1"
+$DeleteScript = Join-Path $PSScriptRoot "delete-order.ps1"
+
 # ============================================================
 # MENU PRINCIPAL
 # ============================================================
@@ -70,6 +72,7 @@ do {
     Write-Host ""
     Write-Host "  1. Descargar etiqueta existente"
     Write-Host "  2. Generar etiqueta desde JSON"
+    Write-Host "  3. Eliminar orden de transporte" -ForegroundColor Yellow
     Write-Host ""
     Write-Host "  0. Salir"
     Write-Host ""
@@ -141,6 +144,43 @@ do {
                 Write-Host "ERROR: No se encuentra get-label2.ps1" -ForegroundColor Red
             }
         }
+		# ====================================================
+		# OPCION 3 - ELIMINAR ORDEN DE TRANSPORTE
+		# ====================================================
+
+		"3" {
+	
+		    Write-Host ""
+    		    Write-Host "ELIMINAR ORDEN DE TRANSPORTE" -ForegroundColor Yellow
+		    Write-Host ""
+		    Write-Host "ATENCION: Esta operacion elimina una orden de Dachser." -ForegroundColor Yellow
+		    Write-Host "Introduce manualmente el ID de la expedicion a eliminar."
+		    Write-Host ""
+
+		    $TransportOrderId = Read-Host "ID Dachser (0 = Cancelar)"
+
+		    if ($TransportOrderId -eq "0") {
+		        	Write-Host "Operacion cancelada." -ForegroundColor Yellow
+			        break
+    			}
+
+		    # Validar identificador
+		    if ($TransportOrderId -notmatch '^\d+$') {
+		        Write-Host "ERROR: El ID debe contener solo numeros." -ForegroundColor Red
+		        break
+		    }
+
+		    if (Test-Path -LiteralPath $DeleteScript -PathType Leaf) {
+
+		        & $DeleteScript `
+		            -TransportOrderId $TransportOrderId `
+		            -ApiKey $ApiKey
+
+		    }
+		    else {
+		        Write-Host "ERROR: No se encuentra delete-order.ps1" -ForegroundColor Red
+		    }
+		}
 
         # ====================================================
         # OPCION 0 - SALIR
