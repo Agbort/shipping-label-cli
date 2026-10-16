@@ -1,0 +1,26 @@
+
+# Credenciales
+DACHSER.ini
+.env
+secrets/
+config.local.ps1
+
+# Peticiones y respuestas reales
+*.json
+
+# Etiquetas
+*.pdf
+*.zpl
+
+# Directorios operativos
+generadas/
+JSON_ENVIADOS/
+
+# Archivos temporales y logs
+*.log
+*.tmp
+
+# Ejemplos ficticios permitidos
+!examples/
+!examples/*.json
+!examples/*.pdf
